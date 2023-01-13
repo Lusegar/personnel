@@ -17,9 +17,9 @@ public class Employe implements Serializable, Comparable<Employe>
 	private String nom, prenom, password, mail;
 	private Ligue ligue;
 	private GestionPersonnel gestionPersonnel;
-	private LocalDate date_arrivé, date_depart;
+	private LocalDate dateArrive, dateDepart;
 	
-	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate date_arrivé, LocalDate date_depart)
+	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateArrive, LocalDate dateDepart)
 	{
 		this.gestionPersonnel = gestionPersonnel;
 		this.nom = nom;
@@ -27,8 +27,8 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password = password;
 		this.mail = mail;
 		this.ligue = ligue;
-		this.date_arrivé = date_arrivé;
-		this.date_depart = date_depart;
+		this.dateArrive = dateArrive;
+		this.dateDepart = dateDepart;
 	}
 	
 	/**
@@ -153,20 +153,20 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * récupère les droits d'administration sur sa ligue.
 	 */
 	
-	public LocalDate get_date_arrivé(){
-		return date_arrivé;
+	public LocalDate getDateArrive(){
+		return dateArrive;
 	}
 	
-	public void set_date_arrivé(LocalDate date_arrivé) {
-		this.date_arrivé = date_arrivé;
+	public void setDateArrivé(LocalDate dateArrive) {
+		this.dateArrive = dateArrive;
 	}
 	
-	public LocalDate get_date_depart(){
-		return date_depart;
+	public LocalDate getDateDepart(){
+		return dateDepart;
 	}
 	
-	public void set_date_depart(LocalDate date_depart) {
-		this.date_depart = date_depart;
+	public void setDateDepart(LocalDate dateDepart) {
+		this.dateDepart = dateDepart;
 	}
 	
 	public void remove()
