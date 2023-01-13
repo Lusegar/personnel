@@ -1,8 +1,8 @@
 package testsUnitaires;
 
 import static org.junit.jupiter.api.Assertions.*;
+import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
-
 import personnel.*;
 
 class testLigue 
@@ -20,7 +20,43 @@ class testLigue
 	void addEmploye() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty"); 
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null); 
 		assertEquals(employe, ligue.getEmployes().first());
 	}
+	
+	@Test
+	void getNom() throws SauvegardeImpossible
+	{
+		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
+		assertEquals("Fléchettes", ligue.getNom());
+	}
+	
+	@Test
+	void setNom() throws SauvegardeImpossible
+	{
+		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
+		ligue.setNom("301");
+		assertEquals("301", ligue.getNom());
+	}
+	
+	@Test
+	void getAdmin() throws SauvegardeImpossible
+	{
+		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
+		ligue.setAdministrateur(employe);
+		assertEquals("Bouchard", ligue.getAdministrateur().getNom());
+	}
+	
+	@Test
+	void setAdmin() throws SauvegardeImpossible
+	{
+		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", LocalDate.now(), null);
+		ligue.setAdministrateur(employe);
+		assertEquals(employe, ligue.getAdministrateur());
+	}
+	
+	
+	
 }
