@@ -1,22 +1,20 @@
-CREATE DATABASE IF NOT EXISTS `LIGUES` DEFAULT CHARACTER SET UTF8MB4 COLLATE utf8_general_ci;
-USE `LIGUES`;
 
 CREATE TABLE `EMPLOYE` (
-  `id_employé` VARCHAR(42),
-  `nom_employé` VARCHAR(42),
-  `prénom_employé` VARCHAR(42),
-  `mail_employé` VARCHAR(42),
-  `mdp_employé` VARCHAR(42),
-  `date_arrivée` VARCHAR(42),
-  `date_départ` VARCHAR(42),
-  `habitation` VARCHAR(42),
-  `id_ligue` VARCHAR(42),
+  `id_employé` INT(255)  AUTO_INCREMENT,
+  `nom_employé` VARCHAR(42) DEFAULT NULL,
+  `prénom_employé` VARCHAR(42) DEFAULT NULL,
+  `mail_employé` VARCHAR(42) DEFAULT NULL,
+  `mdp_employé` VARCHAR(42) DEFAULT NULL,
+  `date_arrivée` DATE,
+  `date_départ` DATE,
+  `habilitation` INT(2),
+  `id_ligue` INT(255) DEFAULT NULL,
   PRIMARY KEY (`id_employé`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `LIGUE` (
-  `id_ligue` VARCHAR(42),
-  `nom_ligue` VARCHAR(42),
+  `id_ligue` int(255) AUTO_INCREMENT,
+  `nom_ligue` varchar(42) DEFAULT NULL,
   PRIMARY KEY (`id_ligue`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4;
 

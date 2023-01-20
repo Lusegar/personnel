@@ -3,7 +3,7 @@
 <rect id="frame" x="0" y="0" width="256" height="247" fill="#ffffbf" stroke="none" stroke-width="0"/>
 
 <!-- Association APPARTENIR -->
-<g class="page_0_G2a7hrCW diagram_page" visibility="visible">
+<g class="page_0_R2cHn2mn diagram_page" visibility="visible">
 	<line x1="55" y1="43" x2="55" y2="153" stroke="#f46d43" stroke-width="2"/>
 	<text x="60" y="94" fill="#4575b4" font-family="Verdana" font-size="12">0,N</text>
 	<line x1="190" y1="153" x2="55" y2="153" stroke="#f46d43" stroke-width="2"/>
@@ -18,7 +18,7 @@
 </g>
 
 <!-- Entity LIGUE -->
-<g class="page_0_G2a7hrCW diagram_page" visibility="visible">
+<g class="page_0_R2cHn2mn diagram_page" visibility="visible">
 	<g>
 		<rect x="17" y="9" width="76" height="25" fill="#abd9e9" stroke="#abd9e9" stroke-width="0" opacity="1"/>
 		<rect x="17" y="34" width="76" height="43" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0" opacity="1"/>
@@ -32,7 +32,7 @@
 </g>
 
 <!-- Entity EMPLOYE -->
-<g class="page_0_G2a7hrCW diagram_page" visibility="visible">
+<g class="page_0_R2cHn2mn diagram_page" visibility="visible">
 	<g>
 		<rect x="133" y="68" width="114" height="25" fill="#abd9e9" stroke="#abd9e9" stroke-width="0" opacity="1"/>
 		<rect x="133" y="93" width="114" height="145" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0" opacity="1"/>
@@ -48,6 +48,6 @@
 	<text x="138" y="178.8" fill="#000" font-family="Verdana" font-size="12">MDP Employé</text>
 	<text x="138" y="195.8" fill="#000" font-family="Verdana" font-size="12">Date arrivée</text>
 	<text x="138" y="212.8" fill="#000" font-family="Verdana" font-size="12">Date départ</text>
-	<text x="138" y="229.8" fill="#000" font-family="Verdana" font-size="12">habitation</text>
+	<text x="138" y="229.8" fill="#000" font-family="Verdana" font-size="12">habilitation</text>
 </g>
 </svg>
