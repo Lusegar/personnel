@@ -1,9 +1,8 @@
 package commandLine;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import static commandLineMenus.rendering.examples.util.InOut.getString;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import commandLineMenus.List;
@@ -73,13 +72,13 @@ public class LigueConsole
 		Menu menu = new Menu("Editer " + ligue.getNom());
 		menu.add(afficher(ligue));
 		menu.add(gererEmployes(ligue));
-		menu.add(changerAdministrateur(ligue));
+		menu.add(changerAdmin(ligue));
 		menu.add(changerNom(ligue));
 		menu.add(supprimer(ligue));
 		menu.addBack("q");
 		return menu;
 	}
-
+	
 	private Option changerNom(final Ligue ligue)
 	{
 		return new Option("Renommer", "r", 
@@ -99,15 +98,9 @@ public class LigueConsole
 		return new Option("ajouter un employé", "a",
 				() -> 
 				{
-					ligue.addEmploye(
-							getString("nom : "), 
-							getString("prenom : "), 
-							getString("mail : "),
-							getString("password : "), 
-							getDate("Date d'arrivée YYYY-MM-JJ : "),
-							getDate("Date de départ YYYY-MM-JJ : "));
-
-					   
+					ligue.addEmploye(getString("nom : "), 
+						getString("prenom : "), getString("mail : "), 
+						getString("password : "), LocalDate.now(), LocalDate.now());
 				}
 		);
 	}
@@ -117,50 +110,30 @@ public class LigueConsole
 		Menu menu = new Menu("Gérer les employés de " + ligue.getNom(), "e");
 		menu.add(afficherEmployes(ligue));
 		menu.add(ajouterEmploye(ligue));
-		menu.add(modifierEmploye(ligue));
-		menu.add(supprimerEmploye(ligue));
+		menu.add(selectionnerEmploye(ligue));
 		menu.addBack("q");
 		return menu;
 	}
-
-	private List<Employe> supprimerEmploye(final Ligue ligue)
+	
+	private List<Employe> selectionnerEmploye(final Ligue ligue)
 	{
-		return new List<>("Supprimer un employé", "s", 
+		return new List<>("Sélectionner un employé", "i", 
 				() -> new ArrayList<>(ligue.getEmployes()),
-				(index, element) -> {element.remove();}
+				employeConsole.gererEmploye()
 				);
 	}
 	
-	private List<Employe> changerAdministrateur(final Ligue ligue)
+	private List<Employe> changerAdmin(final Ligue ligue)
 	{
-		return null;
-	}		
-
-	private List<Employe> modifierEmploye(final Ligue ligue)
-	{
-		return new List<>("Modifier un employé", "e", 
+		return new List<>("Changer administrateur", "o", 
 				() -> new ArrayList<>(ligue.getEmployes()),
-				employeConsole.editerEmploye()
+				(index, element) -> {ligue.setAdministrateur(element);}
 				);
-	}
+	}		
 	
 	private Option supprimer(Ligue ligue)
 	{
 		return new Option("Supprimer", "d", () -> {ligue.remove();});
 	}
-	private LocalDate getDate(String message) {
-		while (true) {
-			try {
-				String date = getString(message);
-				if (date.equals("")) {
-					return null;
-				} else {
-					return LocalDate.parse(date);
-				}
-			} catch (DateTimeParseException e) {
-				System.out.println("Date incorrect");
-			}
-		}
-
-}
+	
 }
