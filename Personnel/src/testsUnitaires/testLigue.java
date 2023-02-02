@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import personnel.*;
 
-class testPersonnel
+class testLigue
 {
 	GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
 	
