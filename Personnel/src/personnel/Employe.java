@@ -202,11 +202,16 @@ public class Employe implements Serializable, Comparable<Employe>
 	@Override
 	public String toString()
 	{
-		String res = nom + " " + prenom + " " + mail + " " + this.dateArrive + " (";
-		if (estRoot())
-			res += "super-utilisateur";
-		else
-			res += ligue.toString();
+		String res = nom + " " + prenom + " " + mail + " " + this.dateArrive + " ";
+		if (this.dateDepart != null) {
+			res = res + this.dateDepart;
+			if (estRoot())
+				res += "super-utilisateur";
+			else {
+				res += " (";
+				res += ligue.toString();
+			}
+		}
 		return res + ")";
 	}
 }
