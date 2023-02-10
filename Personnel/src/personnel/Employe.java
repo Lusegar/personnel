@@ -2,6 +2,8 @@ package personnel;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.SortedSet;
 
 /**
  * Employé d'une ligue hébergée par la M2L. Certains peuvent 
@@ -16,6 +18,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	private static final long serialVersionUID = 4795721718037994734L;
 	private String nom, prenom, password, mail;
 	private Ligue ligue;
+	private SortedSet<Employe> employe;
 	private GestionPersonnel gestionPersonnel;
 	private LocalDate dateArrive, dateDepart;
 	
@@ -157,7 +160,7 @@ public class Employe implements Serializable, Comparable<Employe>
 		return dateArrive;
 	}
 	
-	public void setDateArrivé(LocalDate dateArrive) {
+	public void setDateArrive(LocalDate dateArrive) {
 		this.dateArrive = dateArrive;
 	}
 	
@@ -181,6 +184,11 @@ public class Employe implements Serializable, Comparable<Employe>
 		else
 			throw new ImpossibleDeSupprimerRoot();
 	}
+	
+	public SortedSet<Employe> getEmploye()
+	{
+		return Collections.unmodifiableSortedSet(employe);
+	}
 
 	@Override
 	public int compareTo(Employe autre)
@@ -194,11 +202,16 @@ public class Employe implements Serializable, Comparable<Employe>
 	@Override
 	public String toString()
 	{
-		String res = nom + " " + prenom + " " + mail + " (";
-		if (estRoot())
-			res += "super-utilisateur";
-		else
-			res += ligue.toString();
+		String res = nom + " " + prenom + " " + mail + " " + this.dateArrive + " ";
+		if (this.dateDepart != null) {
+			res = res + this.dateDepart;
+			if (estRoot())
+				res += "super-utilisateur";
+			else {
+				res += " (";
+				res += ligue.toString();
+			}
+		}
 		return res + ")";
 	}
 }
