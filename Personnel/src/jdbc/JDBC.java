@@ -135,7 +135,7 @@ public class JDBC implements Passerelle
 		try {
 			PreparedStatement instruction;
 			instruction = connection.prepareStatement("DELETE FROM ligue WHERE id_ligue = (?)");
-			instruction.setInt(1, employe.getId());
+			instruction.setInt(1, ligue.getId());
 			instruction.executeUpdate();
 		} 
 		catch (SQLException exception) 
@@ -149,7 +149,7 @@ public class JDBC implements Passerelle
 		try {
 			PreparedStatement instruction;
 			instruction = connection.prepareStatement("DELETE FROM ligue WHERE id_ligue = (?)");
-			instruction.setInt(1, employe.getId());
+			instruction.setInt(1, ligue.getId());
 			instruction.executeUpdate();
 		} 
 		catch (SQLException exception) 
@@ -162,9 +162,9 @@ public class JDBC implements Passerelle
 	public void update(Ligue ligue) throws SauvegardeImpossible {
 		try {
 			PreparedStatement instruction;
-			instruction = connection.prepareStatement("UPDATE FROM ligue SET nom = (?) WHERE id_ligue = (?)");
-			instruction.setInt(1, employe.getNom());
-			instruction.setInt(2, employe.getId());
+			instruction = connection.prepareStatement("UPDATE FROM ligue SET nom_ligue = (?) WHERE id_ligue = (?)");
+			instruction.setInt(1, ligue.getNom());
+			instruction.setInt(2, ligue.getId());
 			instruction.executeUpdate();
 		} 
 		catch (SQLException exception) 
