@@ -143,4 +143,8 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	{
 		return nom;
 	}
+	
+	public int getId() {
+		return id;
+	}
 }

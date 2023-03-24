@@ -21,6 +21,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	private SortedSet<Employe> employe;
 	private GestionPersonnel gestionPersonnel;
 	private LocalDate dateArrive, dateDepart;
+	private int id;
 	
 	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateArrive, LocalDate dateDepart)
 	{
@@ -45,6 +46,10 @@ public class Employe implements Serializable, Comparable<Employe>
 	
 	public boolean estAdmin(Ligue ligue)
 	{
+		return ligue.getAdministrateur() == this;
+	}
+	
+	public boolean estAdmin() {
 		return ligue.getAdministrateur() == this;
 	}
 	
@@ -141,6 +146,10 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password= password;
 	}
 
+	public String getPassword()
+	{
+		return password;
+	}
 	/**
 	 * Retourne la ligue à laquelle l'employé est affecté.
 	 * @return la ligue à laquelle l'employé est affecté.
@@ -170,6 +179,14 @@ public class Employe implements Serializable, Comparable<Employe>
 	
 	public void setDateDepart(LocalDate dateDepart) {
 		this.dateDepart = dateDepart;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
 	}
 	
 	public void remove()
