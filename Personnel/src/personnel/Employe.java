@@ -81,6 +81,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setNom(String nom)
 	{
 		this.nom = nom;
+		this.update = nom;
 	}
 
 	/**
@@ -101,6 +102,8 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setPrenom(String prenom)
 	{
 		this.prenom = prenom;
+		this.update = prenom;
+
 	}
 
 	/**
@@ -121,6 +124,8 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setMail(String mail)
 	{
 		this.mail = mail;
+		this.update = mail;
+
 	}
 
 	/**
@@ -144,6 +149,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setPassword(String password)
 	{
 		this.password= password;
+		this.update = password;
 	}
 
 	public String getPassword()
@@ -171,6 +177,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	
 	public void setDateArrive(LocalDate dateArrive) {
 		this.dateArrive = dateArrive;
+		this.update = dateArrive;
 	}
 	
 	public LocalDate getDateDepart(){
@@ -179,10 +186,12 @@ public class Employe implements Serializable, Comparable<Employe>
 	
 	public void setDateDepart(LocalDate dateDepart) {
 		this.dateDepart = dateDepart;
+		this.update = dateDepart;
 	}
 	
 	public void setId(int id) {
 		this.id = id;
+		this.update = id;
 	}
 
 	public int getId() {

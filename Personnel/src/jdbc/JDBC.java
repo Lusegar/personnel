@@ -6,6 +6,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import commandLineMenus.examples.employees.core.Employee;
+
 import java.sql.Date;
 
 import personnel.*;
@@ -106,6 +109,84 @@ public class JDBC implements Passerelle
 			ResultSet id = instruction.getGeneratedKeys();
 			id.next();
 			return id.getInt(1);
+		} 
+		catch (SQLException exception) 
+		{
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}
+	}
+	@Override
+	public void delete(Employe employe) throws SauvegardeImpossible {
+		try {
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("DELETE FROM employe WHERE id_employe = (?)");
+			instruction.setInt(1, employe.getId());
+			instruction.executeUpdate();
+		} 
+		catch (SQLException exception) 
+		{
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}
+	}
+	@Override
+	public void add(Ligue ligue) throws SauvegardeImpossible {
+		try {
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("DELETE FROM ligue WHERE id_ligue = (?)");
+			instruction.setInt(1, employe.getId());
+			instruction.executeUpdate();
+		} 
+		catch (SQLException exception) 
+		{
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}
+	}
+	@Override
+	public void delete(Ligue ligue) throws SauvegardeImpossible {
+		try {
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("DELETE FROM ligue WHERE id_ligue = (?)");
+			instruction.setInt(1, employe.getId());
+			instruction.executeUpdate();
+		} 
+		catch (SQLException exception) 
+		{
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}
+	}
+	@Override
+	public void update(Ligue ligue) throws SauvegardeImpossible {
+		try {
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("UPDATE FROM ligue SET nom = (?) WHERE id_ligue = (?)");
+			instruction.setInt(1, employe.getNom());
+			instruction.setInt(2, employe.getId());
+			instruction.executeUpdate();
+		} 
+		catch (SQLException exception) 
+		{
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}
+	}
+	@Override
+	public void update(Employe employe) throws SauvegardeImpossible {
+		try {
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("UPDATE FROM employe SET nom = (?), prenom = (?), password = (?), mail = (?), date-arrive = (?), date-depart = (?), habilitation = (?) WHERE id_employe = (?)");
+			instruction.setString(1, employe.getNom());
+			instruction.setString(2, employe.getPrenom());
+			instruction.setString(3, employe.getPassword());
+			instruction.setString(4, employe.getMail());
+			instruction.setDate(5, employe.getDateArrive() == null ? null : Date.valueOf(employe.getDateArrive()));
+			instruction.setDate(6, employe.getDateDepart() == null ? null : Date.valueOf(employe.getDateDepart()));
+			instruction.setBoolean(7, employe.estAdmin());
+			instruction.setInt(8, employe.getLigue().getId());
+			instruction.executeUpdate();
 		} 
 		catch (SQLException exception) 
 		{

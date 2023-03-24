@@ -61,6 +61,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	public void setNom(String nom)
 	{
 		this.nom = nom;
+		this.update = nom;
 	}
 
 	/**
@@ -87,6 +88,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 		if (administrateur != root && administrateur.getLigue() != this)
 			throw new DroitsInsuffisants();
 		this.administrateur = administrateur;
+		this.update = administrateur;
 	}
 
 	/**
