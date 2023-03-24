@@ -185,7 +185,7 @@ public class JDBC implements Passerelle
 			instruction.setDate(5, employe.getDateArrive() == null ? null : Date.valueOf(employe.getDateArrive()));
 			instruction.setDate(6, employe.getDateDepart() == null ? null : Date.valueOf(employe.getDateDepart()));
 			instruction.setBoolean(7, employe.estAdmin());
-			instruction.setInt(8, employe.getLigue().getId());
+			instruction.setInt(8, employe.getLigueId());
 			instruction.executeUpdate();
 		} 
 		catch (SQLException exception) 
