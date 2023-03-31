@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : ven. 31 mars 2023 à 13:33
+-- Généré le : ven. 31 mars 2023 à 14:29
 -- Version du serveur : 10.4.25-MariaDB
 -- Version de PHP : 8.1.10
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `employe` (
   `id_employe` int(255) NOT NULL,
-  `nom_emplye` varchar(42) DEFAULT NULL,
+  `nom_employe` varchar(42) DEFAULT NULL,
   `prenom_employe` varchar(42) DEFAULT NULL,
   `mail_employe` varchar(42) DEFAULT NULL,
   `mdp_employe` varchar(42) DEFAULT NULL,
@@ -37,6 +37,17 @@ CREATE TABLE `employe` (
   `date_depart` date NOT NULL,
   `habilitation` int(2) NOT NULL,
   `id_ligue` int(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ligue`
+--
+
+CREATE TABLE `ligue` (
+  `id_ligue` int(255) NOT NULL,
+  `nom_ligue` varchar(42) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -51,6 +62,12 @@ ALTER TABLE `employe`
   ADD KEY `id_ligue` (`id_ligue`);
 
 --
+-- Index pour la table `ligue`
+--
+ALTER TABLE `ligue`
+  ADD PRIMARY KEY (`id_ligue`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -59,6 +76,12 @@ ALTER TABLE `employe`
 --
 ALTER TABLE `employe`
   MODIFY `id_employe` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `ligue`
+--
+ALTER TABLE `ligue`
+  MODIFY `id_ligue` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
