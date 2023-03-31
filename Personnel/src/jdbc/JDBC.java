@@ -101,7 +101,7 @@ public class JDBC implements Passerelle
 			instruction.setString(2, employe.getPrenom());
 			instruction.setString(3, employe.getPassword());
 			instruction.setString(4, employe.getMail());
-			instruction.setDate(5, employe.getDateArrive() == null ? null : Date.valueOf(employe.getDateArrive()));
+			instruction.setDate(5, employe.getDateArrive() == Date.valueOf(employe.getDateArrive()));
 			instruction.setDate(6, employe.getDateDepart() == null ? null : Date.valueOf(employe.getDateDepart()));
 			instruction.setBoolean(7, employe.estAdmin());
 			instruction.setInt(8, employe.getLigue().getId());
@@ -182,7 +182,7 @@ public class JDBC implements Passerelle
 			instruction.setString(2, employe.getPrenom());
 			instruction.setString(3, employe.getPassword());
 			instruction.setString(4, employe.getMail());
-			instruction.setDate(5, employe.getDateArrive() == null ? null : Date.valueOf(employe.getDateArrive()));
+			instruction.setDate(5, employe.getDateArrive() == Date.valueOf(employe.getDateArrive()));
 			instruction.setDate(6, employe.getDateDepart() == null ? null : Date.valueOf(employe.getDateDepart()));
 			instruction.setBoolean(7, employe.estAdmin());
 			instruction.setInt(8, employe.getLigueId());
@@ -193,5 +193,27 @@ public class JDBC implements Passerelle
 			exception.printStackTrace();
 			throw new SauvegardeImpossible(exception);
 		}
+	}
+	@Override
+	public void add(Employe employe) throws SauvegardeImpossible {
+		try {
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("DELETE FROM ligue WHERE id_ligue = (?)");
+			instruction.setString(1, employe.getNom());
+			instruction.setString(2, employe.getPrenom());
+			instruction.setString(3, employe.getPassword());
+			instruction.setString(4, employe.getMail());
+			instruction.setDate(5, employe.getDateArrive() == null ? null : Date.valueOf(employe.getDateArrive()));
+			instruction.setDate(6, employe.getDateDepart() == null ? null : Date.valueOf(employe.getDateDepart()));
+			instruction.setBoolean(7, employe.estAdmin());
+			//instruction.setInt(8, employe.getLigueId());
+			instruction.executeUpdate();
+		} 
+		catch (SQLException exception) 
+		{
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}
+		
 	}
 }
