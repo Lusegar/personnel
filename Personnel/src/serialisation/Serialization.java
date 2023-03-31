@@ -51,11 +51,12 @@ public class Serialization implements personnel.Passerelle
 	{
 		return -1;
 	}
-	@Override
+	
 	public int insert(Employe employe) throws SauvegardeImpossible
 	{
 		return 0;
 	}
+
 	@Override
 	public void update(Ligue ligue) throws SauvegardeImpossible {
 		// TODO Auto-generated method stub
